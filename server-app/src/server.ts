@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from "cors";
-import connectDb from "./config/dbConfig.js";
-import shortUrl from "./routes/shortUrl.js"; // make sure .js is included if using ES modules
+import connectDb from "./config/dbConfig";
+import shortUrl from "./routes/shortUrl"; // make sure .js is included if using ES modules
 
 dotenv.config();
 connectDb();
