@@ -3,3 +3,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this to your globals.css to ensure no gray gaps appear */
+body {
+  background-color: #060b1a;
+}
