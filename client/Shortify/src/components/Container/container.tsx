@@ -46,7 +46,7 @@ const Body: React.FunctionComponent<IBodyProps> = () => {
 
   return (
     <div className="min-h-screen bg-[#060b1a] text-white px-4 py-12 md:px-20">
-      {/* Header Section */}
+      
       <div className="max-w-4xl mx-auto text-center space-y-6 mb-16">
         <div className="inline-block px-4 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-xs font-medium text-slate-300 uppercase tracking-wider">
           • New: Advanced Analytics 2.0
@@ -59,7 +59,7 @@ const Body: React.FunctionComponent<IBodyProps> = () => {
           Paste your untidy links below to create trackable, manageable short links that look professional and boost engagement.
         </p>
 
-        {/* Shorten Input Form */}
+        
         <form onSubmit={handleSubmit} className="relative max-w-2xl mx-auto mt-10">
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -105,7 +105,7 @@ const Body: React.FunctionComponent<IBodyProps> = () => {
           </div>
         </div>
 
-        {/* Right Table Section */}
+       
         <div className="md:col-span-2 bg-[#0d1425] border border-slate-800 rounded-[2rem] overflow-hidden">
           <div className="p-8 border-b border-slate-800 flex justify-between items-center">
             <div>
@@ -167,7 +167,7 @@ const Body: React.FunctionComponent<IBodyProps> = () => {
         </div>
       </div>
 
-      {/* Footer Banner */}
+      
       <div className="max-w-6xl mx-auto mt-12 rounded-[2rem] bg-gradient-to-r from-slate-900 to-indigo-950 p-12 relative overflow-hidden border border-slate-800">
          <div className="relative z-10 max-w-md">
             <h2 className="text-3xl font-bold mb-4">Go Beyond Simple Links.</h2>
@@ -178,7 +178,7 @@ const Body: React.FunctionComponent<IBodyProps> = () => {
               Start for Free
             </button>
          </div>
-         {/* Decorative Background Element */}
+         
          <div className="absolute right-0 top-0 w-1/2 h-full opacity-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500 to-transparent"></div>
       </div>
     </div>
