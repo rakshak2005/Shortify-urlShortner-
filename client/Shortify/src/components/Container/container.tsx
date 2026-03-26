@@ -2,7 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import { serverURL } from "../../Helpers/Constants";
 import type { UrlData } from "../../interface/urldata";
-import { Copy, Trash2, Search, Filter, ExternalLink } from "lucide-react";
+import { Copy, Trash2 , ExternalLink } from "lucide-react";
 
 const Body: React.FunctionComponent = () => {
   const [fullUrl, setFullUrl] = React.useState<string>("");
