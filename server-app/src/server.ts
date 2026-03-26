@@ -1,36 +1,25 @@
-import express from 'express';
-import dotenv from 'dotenv';
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import shortUrlRoutes from "./routes/shortUrl";
 import cors from "cors";
-import connectDb from "./config/dbConfig";
-import shortUrl from "./routes/shortUrl"; // make sure .js is included if using ES modules
 
 dotenv.config();
-connectDb();
 
-const PORT = process.env.PORT || 5001;
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// ✅ Allow localhost (dev) + your Vercel domain
-app.use(cors({
-    origin: [
-        "http://localhost:3000",
-        "https://shortify-url-shortner-ctap.vercel.app"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-}));
+// ROUTES
+app.use("/", shortUrlRoutes);
 
-// ✅ Test root route
-app.get("/", (req, res) => {
-    res.send("Backend is running ✅");
-});
+// DB
+mongoose.connect(process.env.MONGO_URI!)
+  .then(() => console.log("DB connected"))
+  .catch(err => console.log(err));
 
-// ✅ API routes
-app.use("/api", shortUrl);
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+// SERVER
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });

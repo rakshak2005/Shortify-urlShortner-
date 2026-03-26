@@ -1,22 +1,24 @@
 import mongoose from "mongoose";
-import { nanoid } from "nanoid";
+import shortid from "shortid";
 
-const shortUrlScheme = new mongoose.Schema({
-    fullUrl:{
+const urlSchema = new mongoose.Schema(
+  {
+    fullUrl: {
       type: String,
-      reuired: true,
+      required: true,
     },
-    shortUrl:{
-        type: String,
-        required: true,
-        default: () => nanoid().substring(0,8), 
+    shortUrl: {
+      type: String,
+      required: true,
+      unique: true,
+      default: shortid.generate, // auto if not custom
     },
     clicks: {
-        type: Number,
-        default: 0,
-    }
-},{
-    timestamps: true
-});
+      type: Number,
+      default: 0,
+    },
+  },
+  { timestamps: true }
+);
 
-export const urlModel = mongoose.model("shortUrl", shortUrlScheme);
+export const urlModel = mongoose.model("url", urlSchema);

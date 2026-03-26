@@ -1,18 +1,14 @@
 import express from "express";
-import { createUrl, deleteUrl, getAllUrl, getUrl } from "../controller/shortUrl";
+import { createUrl, getAllUrl, getUrl, deleteUrl } from "../controller/shortUrl";
 
 const router = express.Router();
 
-// Create short URL
-router.post("/shortUrl", createUrl);
+// ✅ API routes
+router.post("/shorturl", createUrl);
+router.get("/shorturl", getAllUrl);
+router.delete("/shorturl/:id", deleteUrl);
 
-// Get all short URLs
-router.get("/shortUrl", getAllUrl);
-
-// Redirect (use :shortUrl for consistency with controller)
-router.get("/shortUrl/:shortUrl", getUrl);
-
-// Delete by ID
-router.delete("/shortUrl/:id", deleteUrl);
+// ✅ REDIRECT (MUST BE LAST)
+router.get("/:shortUrl", getUrl);
 
 export default router;

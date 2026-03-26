@@ -6,18 +6,40 @@ type IdParam = { id: string };
 // Create new short URL
 export const createUrl = async (req: express.Request, res: express.Response) => {
   try {
-    const { fullUrl } = req.body;
+    const { fullUrl, customUrl } = req.body;
+
     if (!fullUrl) {
       return res.status(400).send({ message: "fullUrl is required" });
     }
 
+    // ✅ FIXED CONDITION
+    if (customUrl && customUrl.trim() !== "") {
+
+      const cleanCustomUrl = customUrl.trim();
+
+      const existingCustom = await urlModel.findOne({ shortUrl: cleanCustomUrl });
+
+      if (existingCustom) {
+        return res.status(409).send({ message: "Custom URL already taken" });
+      }
+
+      const newUrl = await urlModel.create({
+        fullUrl,
+        shortUrl: cleanCustomUrl,
+      });
+
+      return res.status(201).send(newUrl);
+    }
+
+    // Normal auto-generated URL
     const existing = await urlModel.findOne({ fullUrl });
     if (existing) {
-      return res.status(409).send(existing);
+      return res.status(200).send(existing);
     }
 
     const shortUrl = await urlModel.create({ fullUrl });
     return res.status(201).send(shortUrl);
+
   } catch (error) {
     console.error(error);
     return res.status(500).send({ message: "something went wrong" });
@@ -28,16 +50,15 @@ export const createUrl = async (req: express.Request, res: express.Response) => 
 export const getAllUrl = async (req: express.Request, res: express.Response) => {
   try {
     const urls = await urlModel.find();
-    if (!urls || urls.length === 0) {
-      return res.status(404).send({ message: "No short urls found" });
-    }
+
+    // ✅ ALWAYS return 200
     return res.status(200).send(urls);
+
   } catch (error) {
     console.error(error);
     return res.status(500).send({ message: "something went wrong" });
   }
 };
-
 // Redirect by shortUrl
 export const getUrl = async (req: express.Request, res: express.Response) => {
   try {
