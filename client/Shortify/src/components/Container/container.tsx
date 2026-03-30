@@ -153,6 +153,7 @@ const Body: React.FunctionComponent = () => {
                     <td className="px-8 py-5 flex gap-3">
                       <button
                         onClick={() => {
+
     const baseUrl = serverURL.replace('/api', ''); 
     const link = `${baseUrl}/${item.shortUrl}`;
     
