@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // ROUTES
-app.use("/", shortUrlRoutes);
+app.use("/api", shortUrlRoutes);
 
 // DB
 mongoose.connect(process.env.MONGO_URI!)
