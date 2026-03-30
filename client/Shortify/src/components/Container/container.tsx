@@ -153,14 +153,15 @@ const Body: React.FunctionComponent = () => {
                     <td className="px-8 py-5 flex gap-3">
                       <button
                         onClick={() => {
-                          const link = `${serverURL}/${item.shortUrl}`;
-                          navigator.clipboard.writeText(link);
-                          alert("Copied: " + link);
-                        }}
-                        className="p-2 bg-slate-800 rounded-lg hover:bg-indigo-500"
-                        title="Copy to clipboard"
-                      >
-                        <Copy size={16} />
+    const baseUrl = serverURL.replace('/api', ''); 
+    const link = `${baseUrl}/${item.shortUrl}`;
+    
+    navigator.clipboard.writeText(link);
+    alert("Copied: " + link);
+  }}
+  className="p-2 bg-slate-800 rounded-lg hover:bg-indigo-500"
+>
+  <Copy size={16} />
                       </button>
 
                       <button
