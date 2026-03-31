@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
 
         {/* Copyright Section */}
         <div className="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] uppercase tracking-widest text-slate-500">
-          <p>Copyright © 2026 Shortify | Nakabok. All rights reserved.</p>
+          <p>Copyright © 2026 Shortify | Rakshak All rights reserved.</p>
           <div className="flex gap-4">
             <span>Built with React</span>
             <span>•</span>
